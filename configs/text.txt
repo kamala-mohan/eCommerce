@@ -1,0 +1,26 @@
+Environments
+-----------------
+- Dev environment -> working on the project n not availabke for the user
+- UAT/Staging Environment
+    Simulation of the production environment
+- QA environment
+- Production Environment -> is available for the user
+
+
+
+What is a program?
+Program is a set of instructions that the computer has to perform.
+Program resides in secondary memory.
+Execute a program
+Take the program and bring it to main memory.
+Execution of a program -> process.
+
+
+
+Git
+-----
+git init -> Creates a new respository
+
+git add . ->(add all the files in this project)
+
+
