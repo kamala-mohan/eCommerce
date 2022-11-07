@@ -1,0 +1,301 @@
+Environments
+-----------------
+- Dev environment -> working on the project n not availabke for the user
+- UAT/Staging Environment
+    Simulation of the production environment
+- QA environment
+- Production Environment -> is available for the user
+
+
+
+What is a program?
+Program is a set of instructions that the computer has to perform.
+Program resides in secondary memory.
+Execute a program
+Take the program and bring it to main memory.
+Execution of a program -> process.
+
+
+
+Git
+-----
+git init -> Creates a new respository
+
+git add . ->(add all the files in this project)
+
+
+
+
+ORM ->Sequelize
+-----------------
+Whenever you are working on a backend project such as ecommerce, database is
+quite common.
+SQL Queries can be time cons uming and complicated to construct in some scenarioes.
+In these scenarios, a new way to do database handling.
+Sequelize comes as a saviour.
+No need to write sql queries to interact with the database.
+
+User
+----------
+SQL ENSERT INTO User VALUES("1", "Riya", 20)
+
+
+Sequelize
+---------------
+User u1 new User(1, Riya, 20);
+
+ORM
+------
+Object Relational Mapper
+-popular among OOPS developers
+-It is a technique that performs mapping of the software objects into tables in
+a database. |
+-Developers only interact with these objects to perform CRUD operations rather
+than wrtiting the sQL queries.
+
+(CRUD) Create, Read, Update, Delete
+
+
+
+Advantages
+--------------------------
+1. ORM minimizes the amount of knowledge needed to write sql by automat ically
+generating the sql codes by itself.
+2. Application Desigining: A well written ORM will force the developers to follow the
+best practice of application designing.
+3. Productivity: Can focus on business logic
+4. Reduced Testing Time
+
+
+Types of ORM
+--------------------
+NodeJS:
+-NodeORM: MySQL, Postgres
+- Prisma -> Open Source
+-Sequelize > PostGres, MysQL, MariaDB
+
+
+Without Sequelize
+---------------------------
+>CREATE database ecom_db;
+>use ecom_db;
+>Create TABLE `Categories`(
+    ID int NOT NULL,
+    Name varchar(255),     //255 is the default VALUE
+    Description varchar(255),
+    CreateAt datetime DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt datetime DEFAULT CURRENT_TIMESTAMP,
+)
+
+const mysql = require("mysql);
+const connection = mysql.createConnection({
+    host:"localhost",
+    user:"root",
+    password:"password",
+    database:"ecom_db"
+});
+
+connection.connect();    //this connects it to the database
+
+//To Execute the queries
+
+const query = "SELECT ID, NAME from Categories";
+var values = [];
+connection.executeQuery(query,values,function(err,result){
+    console.log(err);
+})
+
+
+
+WITH Sequelize
+-------------------
+const Sequelize = require ("Sequelize);
+
+const Sequelize =  new Sequelize(
+    'ecom_db',
+    'root',
+    'password'
+{
+    HOST : "127.0.0.1"
+    dialect:"mysql"
+});
+
+
+//Syntax
+const Sequelize = new Sequelize('database','username','password',{
+    host:"loacalhost",
+    dialect :"mysql"
+});
+
+
+const Category =  Sequelize.define("Category",{
+    id:{
+        type : Sequelize.Integer,
+        primaryKey:true,
+        allowNull : false,
+        autoIncrement : true,
+    },
+    name:{
+        type : Sequelize.String,
+    },
+    Description:{
+        type: Sequelize.String.
+    }
+});
+
+category.findAll();        //instead of SELECT* FROM TABLE_NAME
+
+
+//get the entries in the table
+
+CRUD                        SQL
+
+Create          -           Insert
+Read            -           Select
+Update          -           Update
+Delete          -           Delete
+
+Insert
+--------------
+.create()
+
+Add one record
+
+Category.create({name:'Electronics',Description:'Description here'});
+
+
+To add many records
+category.bulkCreate([
+    {name:'Electronics',Description:'Description here'},
+    {name:'KitchenItems',Description:'Kitchen Related Products'}
+]);
+
+
+Select
+---------
+
+Find all the records of category table.
+Category.findAll()
+
+Model.findAll({attributes:['col1','col2']})
+
+Category.findAll(attributes:[[Sequelize.fn('COUNT',Sequelize('id)),'num_category']])
+
+SQL => equivalent
+select count(id) as num_category from category
+
+
+
+Where
+---------------
+Model.findAll({
+    where:{attribute_name:value}
+})
+
+Category.findAll({
+    where:{
+        name:{[Op.eq]:KitchenItems}
+    }
+})
+
+//Sql equivalent
+Select * from category where name = KitchenItems
+
+Category.findAll({
+    where:{
+        [Op.or]:[
+            {name:KitchenItems},
+            {id:2}
+        ]
+    }
+})
+
+
+category.findAll({
+    where:{
+        [Op.or]:[
+            {name:KitchenItems},
+            {id:2}
+        ]
+    }
+})
+
+
+//Sql equivalent
+Select *from category where name = KitchenItems or id = 2
+
+[Op.eq]:3                    =3
+[Op.ne]:3                    !=3
+[Op.gt]:3                    >3
+[Op.between]:[4,5]          between 4 and 5
+[Op.like]: 'Elec%'          starts wit Elec
+[Op.substring]:Elec         has a substring "elec"
+[Op.startsWith]:Elec        start with Elec
+
+
+
+
+
+UPDATE 
+--------------
+To update the value of a record in the database.
+
+
+//Syntax
+Model.update({attr: val} , {where: attr1:val1})
+
+//Example
+User.update({name:'Ram'},{where id:25})
+
+
+//Update the Description of the Kitchen category in the category table.
+//Id of kitchen = 1
+
+Category.Update({'Description':'new Description for kitchen items'},{where 'id' :'1'})
+
+
+Delete
+------------
+is used to delete a record from the table
+
+Model.destroy({
+    where:{
+        attr:val
+    }
+})
+
+
+//Delete the Electronics and Skincare category from category table
+Electronics:2, Skincare : 9
+
+category.destroy({
+    where:{
+       [Op.and]:{id:2,id:9}
+    }
+})
+
+
+
+Q:Find all the catregories where the id of the category is greater than 3 
+and all those categoroes contain a substring 'product' in their Description
+
+
+category.findAll({
+    where:{
+        [Op.and]:
+        {
+            Id:
+            {
+                [Op.gt]:3
+            }
+        },
+        {
+            Description:
+            {
+                [Op.substring]:'product'
+            }
+        }
+    }
+
+})
+

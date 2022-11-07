@@ -3,5 +3,5 @@ module.exports = {
     USER:"root",
     PASSWORD:"abcdef",
     DB:"ecom_db",
-    dialect:"mysql"
+    dialect:"mysql"   //RDBMS being used
 }

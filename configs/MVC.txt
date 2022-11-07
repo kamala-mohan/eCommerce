@@ -1,0 +1,14 @@
+MVC
+-------
+Model View Controller architectu ral pattern that turns complex application
+deve lopment into a much more manageable process.
+
+
+
+THREE logical components
+--------------------------------------------
+
+1. Model:The backend logic
+2. View: The frontend GUI
+3. Controller: The brain of the application.
+  
