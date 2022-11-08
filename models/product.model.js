@@ -1,0 +1,31 @@
+/**
+ * This file will be used to represent the Product Schema
+ * 
+ * Product Fields:
+ * 1.ID
+ * 2.Name
+ * 3.description
+ * 4.cost
+ */
+module.export = (sequelize,Sequelize) => {
+    const Product = sequelize.define("product",{
+        id:{
+            type:Sequelize.INTEGER,
+            primaryKey:true,
+            autoIncrement:true
+        },
+        name:{
+            type:Sequelize.STRING,
+            allowNull:false
+        },
+        description:{
+            type:Sequelize.STRING
+        },
+        cost:{
+            type:Sequelize.INTEGER,
+            allowNull:false
+        }
+    },{
+        tableName:'products'
+    })
+}

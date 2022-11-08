@@ -4,6 +4,7 @@
  * in this controller file will be excueted
  */
 
+const req = require("express/lib/request");
 const db = require("../models");  //This take us to the db in the index.js page
 const Category = db.category;  //then inside the db obj, we pick the category
 
@@ -15,7 +16,7 @@ const Category = db.category;  //then inside the db obj, we pick the category
 //Checking for the vaid request
 exports.create = (req,res) =>{
     if(!req.body.name){
-        resizeBy.status(400).send({
+        res.status(400).send({
             message:"Name of the category can't be empty ! "
         })
         return;
@@ -30,7 +31,7 @@ exports.create = (req,res) =>{
     const category = {
         name:req.body.name,
         description:req.body.description
-    }
+    };
     
     Category.create(category)
     .then(category=>{
@@ -69,7 +70,7 @@ exports.findAll = (req,res)=>{
             }
         });
     }else{
-        promise = categoryName.findAll();
+        promise = Category.findAll();
     }
 
     promise
@@ -78,7 +79,7 @@ exports.findAll = (req,res)=>{
     })
     .catch(err =>{
         res.status(500).send({
-            message:"Some internal error while fetchimh the categories"
+            message:"Some internal error while fetching the categories"
         })
     })
 }
@@ -92,6 +93,11 @@ exports.findOne = (req,res)=>{
 
     Category.findByPk(categoryId)
     .then(category=>{
+        if(!category){
+            return res.status(404).json({
+                message:'Category not found'
+            })
+        }
         res.status(200).send(category);
     })
     .catch(err =>{

@@ -13,12 +13,12 @@ module.exports = function(app){
     app.get("/ecomm/api/v1/categories",categoryController.findAll);
 
     //Route for the GET request to fetch a category based on category id
-    app.get("/ecomm/api/v1/categories",categoryController.findOne);
+    app.get("/ecomm/api/v1/categories/:id",categoryController.findOne);
 
     //Route for the PUT request to update a category based on id
-    app.put("/ecomm/api/v1/categories",categoryController.update);
+    app.put("/ecomm/api/v1/categories/:id",categoryController.update);
 
     //Route for the DELETE request to delete a category based on id
-    app.delete("/ecomm /api/v1/categories",categoryController.delete);
+    app.delete("/ecomm/api/v1/categories/:id",categoryController.delete);
 
 }

@@ -36,7 +36,7 @@ const Category = db.category;
  */
 db.sequelize.sync({force:true})
 .then(()=>{
-    console.log('tables dropped and ceated');
+    console.log('tables dropped and created');
     init();
 })
 
