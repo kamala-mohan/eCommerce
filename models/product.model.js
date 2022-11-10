@@ -7,7 +7,7 @@
  * 3.description
  * 4.cost
  */
-module.export = (sequelize,Sequelize) => {
+module.exports = (sequelize,Sequelize) => {
     const Product = sequelize.define("product",{
         id:{
             type:Sequelize.INTEGER,
@@ -28,4 +28,5 @@ module.export = (sequelize,Sequelize) => {
     },{
         tableName:'products'
     })
+    return Product;
 }

@@ -4,7 +4,6 @@
  * in this controller file will be excueted
  */
 
-const req = require("express/lib/request");
 const db = require("../models");  //This take us to the db in the index.js page
 const Category = db.category;  //then inside the db obj, we pick the category
 

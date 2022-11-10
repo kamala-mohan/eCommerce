@@ -65,7 +65,8 @@ function init(){
 /**
  * The below line, we are calling the app fxn in the routes section
  */
-require('./routes/category.routes')(app)   
+require('./routes/category.routes')(app)  
+require('./routes/product.routes')(app)    
 
 
 app.listen(serverConfig.PORT,() => {
