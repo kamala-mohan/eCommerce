@@ -14,12 +14,7 @@ const Category = db.category;  //then inside the db obj, we pick the category
 
 //Checking for the vaid request
 exports.create = (req,res) =>{
-    if(!req.body.name){
-        res.status(400).send({
-            message:"Name of the category can't be empty ! "
-        })
-        return;
-    }
+    
     
     
     

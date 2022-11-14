@@ -26,8 +26,12 @@ app.use(bodyParser.json());
  */
 
 
-const db = require("./models");     //The db feom the index.js is used here
+const db = require("./models");     //It automatically chooses index.js
 const Category = db.category;
+const Product = db.product;
+
+Category.hasMany(Product); //This will create a foreign key col (categoryId) in the product table
+
 
 
 /**

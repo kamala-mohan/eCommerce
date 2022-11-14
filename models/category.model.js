@@ -26,6 +26,9 @@ module.exports = (sequelize,Sequelize)=>{
         description:{
             type:Sequelize.STRING
         }
+    },
+    {
+        tableName:'categories'
     });
     return Category;
 }

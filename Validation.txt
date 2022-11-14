@@ -1,0 +1,30 @@
+Category
+
+Product
+
+Relationship
+- One to one <Citizen - Aadhar>
+- One to Many <Father - Child ren>
+- Many to One <Child ren - Father>
+- Many to Many <Teacher - Student>
+
+
+One to Many (Category Products)
+Validations
+1. To ensure the request sent by the client is correct.
+2. To ensure the request seny by client is complete.
+3. To ensure that the client is provided with enf info when a request fails
+
+
+
+Initially
+-----------------
+Routes
+Controllers -> For every cont roller, we wrote validation code
+
+---------------------------------------------------------
+After introducing Middleware
+----------------------------
+Route
+Middleware > Request validator
+Controller 
