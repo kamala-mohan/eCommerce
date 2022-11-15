@@ -37,7 +37,7 @@ const validateProductRequest = (req,res,next) =>{
                 })
                 return;
             }
-            next();
+            next(); //->right response->controller
         })
         .catch(err =>{
             res.status(500).send({

@@ -32,9 +32,26 @@ db.Sequelize = Sequelize;
 db.sequelize = seq;
 db.category = require('./category.model.js')(db.sequelize,Sequelize);
 db.product = require('./product.model.js')(db.sequelize,Sequelize);
+db.user = require('./user.model.js')(db.sequelize,Sequelize);
+db.role = require('./role.model.js')(db.sequelize,Sequelize);
 
+/**
+ * establish the relationship bw the Role and the User
+ *  In the below code we are establishing a many to many 
+ * relationship bw the "role" and the "user" table
+ */
 
+db.role.belongsToMany(db.user,{
+    through: "user_roles",                 //through-> is the table that creates a relationship bw two tables
+    foreignKey:"roleId",
+})
 
+db.user.belongsToMany(db.role,{
+    through:"user_roles",
+    foreignKey:"userId"
+
+})
 
 //Here db is the object and all the key and val pair is pushed inside the obj
 module.exports = db;
+

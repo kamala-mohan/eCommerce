@@ -203,3 +203,25 @@ exports.delete = (req,res) =>{
         })
     })
 }
+
+
+/** Get the products based on category id */
+
+
+exports.getProductsUnderCategory = (req,res) =>{
+    const categoryId = parseInt(req.params.categoryId);
+
+    Product.findAll({
+        where:{
+            categoryId: categoryId
+        }
+    })
+    .then(products =>{
+        res.status(200).send(products);
+    })
+    .catch(err => {
+        res.status(500).send({
+            message:"Some internal error while fetching products based on category id"
+        })
+    })
+}

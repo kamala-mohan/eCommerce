@@ -1,0 +1,41 @@
+Authentication-> lt decides who you are
+Authorisation > It decides what you can do 
+
+Ways of doing Authentication
+--------------------------------
+Basic Authentication / Password Authentication
+----------------------------------------------
+Simplest form of authentication
+- Client is expected to pass Username and passwo rd for every
+request
+- Service if able to validate the authenticity of Username and
+password, can return the response, else reject the response with
+response code 401
+
+
+Token based authentication
+--------------------------
+-User registers the same Way
+-User logins with registered credentials. Login response returns
+a access token as a return
+- Now client instead of passing username/passwo rd every time, they
+need to pass the access token which has an expiry team.
+- JWT token is a standard token used days for token based
+authentication
+
+Advantages:
+-----------------
+1. Client credentials are not over exposed.
+2. Access token are encrypted.
+        haghbabnbkjh->decrypt -> username,password
+        Its decrypted, once it reaches the server
+3. More secure technique
+
+
+JWT
+-----------
+Json Web Token
+- JWT does not hide data but to ensure the authencity of the data.
+-JWT is encoded
+Structure of JWT
+---------------------
