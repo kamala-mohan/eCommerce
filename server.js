@@ -29,6 +29,7 @@ app.use(bodyParser.json());
 const db = require("./models");     //It automatically chooses index.js
 const Category = db.category;
 const Product = db.product;
+const Role = db.role;
 
 Category.hasMany(Product); //This will create a foreign key col (categoryId) in the product table
 
@@ -64,6 +65,20 @@ function init(){
     .catch(err=>{
         console.log("Error while initialising categories table");
     })
+
+
+    /**
+     * Adding roles
+     */
+    Role.create({
+        id:1,
+        name:"user"
+    });
+    Role.create({
+        id:2,
+        name:"admin"
+    })
+
 }
 
 /**
@@ -71,6 +86,7 @@ function init(){
  */
 require('./routes/category.routes')(app)  
 require('./routes/product.routes')(app)    
+require('./routes/auth.routes')(app)    
 
 
 app.listen(serverConfig.PORT,() => {

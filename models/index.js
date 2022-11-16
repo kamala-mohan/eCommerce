@@ -7,7 +7,6 @@ One of the biggest advantages of using index.js file is other file
 trying to import this file just need to provide the module name
 **/
 
-
 const config = require("../configs/db.config");
 const Sequelize = require("sequelize");
 
@@ -51,6 +50,8 @@ db.user.belongsToMany(db.role,{
     foreignKey:"userId"
 
 })
+
+db.ROLES = ["user","admin"]
 
 //Here db is the object and all the key and val pair is pushed inside the obj
 module.exports = db;
