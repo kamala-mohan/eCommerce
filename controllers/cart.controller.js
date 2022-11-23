@@ -89,7 +89,7 @@ exports.getCart = (req, res) => {
                 cost = cost + products[i].cost;
                 ProductSelected.push({
                     id: products[i].id,
-                    name: products[i].name,
+                     name: products[i].name,
                     cost: products[i].cost
                 });
             }

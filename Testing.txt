@@ -1,0 +1,65 @@
+Testing
+it is quite important to test it before deploying on production.
+Testing
+------
+1. Manual -> you run the application, provide some input and check
+whether correct output is received or not.
+2. Automated -> The application is tested by writing more code
+that is solely res ponsible for testing your application.
+
+
+1. Conventionally Testing Process
+--------------------------------
+1. Write the complete code.
+2. Start Testing
+3.Production deptoyment if things look OK
+
+
+
+Challenges
+-----------
+1.Testing is added very kate to the cycle of development.
+2.Last Minutes issues, might delay in the release because
+re-development.
+3.Comprised testing because of the rush of the release.
+
+
+
+
+2. Test Driven development
+----------------------------------
+
+Write testing code before even you start developing the application
+n then write the code to pass all the test cases for that project
+
+This is known as Test driven development
+
+-The developer first writes the test cases based on the requirements.
+If you are building a calculator,
+the developer will write the test cases that assert
+
+-developer write only enf code to pass all the test cases.
+-Once all the test cases are passes, the developer can perform 
+code cleaning, removing some duplicate code and improving the
+performance.
+
+
+Advantages
+------------
+It builds ur confidence when it comes to coding as uk that the code
+written so far is fine.
+
+It helps u achieve 100% test coverage.
+
+It improves productivity
+
+
+
+Unit Testing
+-------------
+Testing framework ->
+-Jest
+Delightful js Testing framework with a focus on simplicity
+It is maintained by Facebook
+It is fast and minimum steps ro setup
+
