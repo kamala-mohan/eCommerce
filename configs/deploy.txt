@@ -1,0 +1,12 @@
+Code (10 APTs)->Deployed Code-> Code (15 APIs) -> Deployed Again
+Code in Github Repository will be deployed.
+Code on Github -> Heroku
+
+
+Database Local??
+1. Deploy our Database
+2. Do some code changes and push it to Github
+3. Deploy the code on Heroku
+
+
+Routes Controller -> Model -> Databases
